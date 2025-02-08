@@ -16,7 +16,7 @@ export const createDocument = async (req, res) => {
       owner: req.user.id,
     });
 
-    if (noOfDocuments >= 3)
+    if (noOfDocuments >= 20)
       return res
         .status(400)
         .json({ message: `You can't create more than 3 documents` });
