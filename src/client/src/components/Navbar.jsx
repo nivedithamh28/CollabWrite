@@ -3,6 +3,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import DarkModeButton from "./DarkModeButton/DarkModeButton.jsx";
 import { useSupplier } from "../context/supplierContext.jsx";
+import "./nav.css";
+
+
 
 const Navbar = () => {
   const { auth, setAuth } = useAuth();
@@ -11,22 +14,14 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("auth");
-    setAuth({
-      user: null,
-      token: null,
-    });
+    setAuth({ user: null, token: null });
     navigate("/");
   };
 
   return (
-    <nav
-      className={`navbar navbar-expand-lg ${darkMode ? "bg-dark" : "bg-light"}`}
-    >
+    <nav className={`navbar navbar-expand-lg ${darkMode ? "bg-dark" : "bg-light"}`}>
       <div className="container-fluid">
-        <NavLink
-          className={`navbar-brand ${darkMode ? "text-light" : "text-dark"}`}
-          to="/"
-        >
+        <NavLink className={`navbar-brand ${darkMode ? "text-light" : "text-dark"}`} to="/">
           CollabWrite
         </NavLink>
         <button
@@ -59,24 +54,12 @@ const Navbar = () => {
                   <DarkModeButton />
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    className={`nav-link ${
-                      darkMode ? "text-light" : "text-dark"
-                    }`}
-                    to="/"
-                    activeclassname="active"
-                  >
+                  <NavLink className={`nav-link ${darkMode ? "text-light" : "text-dark"}`} to="/login">
                     Login
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    className={`nav-link ${
-                      darkMode ? "text-light" : "text-dark"
-                    }`}
-                    to="/register"
-                    activeclassname="active"
-                  >
+                  <NavLink className={`nav-link ${darkMode ? "text-light" : "text-dark"}`} to="/register">
                     Register
                   </NavLink>
                 </li>

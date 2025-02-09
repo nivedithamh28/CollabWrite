@@ -55,12 +55,13 @@ const Register = () => {
 
   return (
     <div
-      className={`container my-5 d-flex justify-content-center align-items-center ${
-        darkMode ? "text-light bg-dark" : "text-dark bg-light"
-      }`}
-      style={{ minHeight: "80vh" }}
-    >
-      <div className="col-md-8 col-lg-6 col-xl-5 p-5 shadow rounded">
+  className={`container my-5 d-flex justify-content-center align-items-center ${
+    darkMode ? "text-light bg-dark-light" : "text-dark bg-light"
+  }`}
+  style={{ minHeight: "80vh" }}
+>
+  <div className={`col-md-8 col-lg-6 col-xl-5 p-5 shadow rounded ${darkMode ? "form-dark-mode" : "bg-white"}`}>
+
         <h1
           className={`display-4 mb-4 text-center ${
             darkMode ? "text-light" : "text-dark"

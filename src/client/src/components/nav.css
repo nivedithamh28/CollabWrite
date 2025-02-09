@@ -1,0 +1,16 @@
+.navbar-brand {
+  font-family: "Poppins", sans-serif !important; /* Ensure it overrides */
+  font-size: 1.8rem !important;
+  font-weight: bold !important;
+  
+}
+
+  
+  .dark-mode .collabwrite-logo {
+    color: #ffcc00; /* Yellow in dark mode */
+  }
+  
+  .light-mode .collabwrite-logo {
+    color: #007bff; /* Blue in light mode */
+  }
+  
