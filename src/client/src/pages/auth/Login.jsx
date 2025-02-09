@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../../context/authContext';
-import { toast } from 'react-toastify';
-import { login } from '../../helpers/auth/auth.helper.js';
-import { useSupplier } from '../../context/supplierContext';
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
+import { toast } from "react-toastify";
+import { login } from "../../helpers/auth/auth.helper.js";
+import { useSupplier } from "../../context/supplierContext";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,13 +12,13 @@ const Login = () => {
 
   useEffect(() => {
     if (auth?.user) {
-      navigate('/home');
+      navigate("/home");
     }
   }, [auth]);
 
   const [userCreds, setUser] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -40,24 +40,42 @@ const Login = () => {
         user,
         token,
       });
-      toast(message, { type: 'success' });
-      navigate('/home');
+      toast.success(message);
+      navigate("/home");
       return;
     }
 
-    toast(message, { type: 'error' });
+    toast.error(message);
   };
 
   return (
-    <div className={`container my-5 d-flex justify-content-center align-items-center ${darkMode ? 'text-light bg-dark' : 'text-dark bg-light'}`} style={{ minHeight: '80vh' }}>
-      <div className="col-md-8 col-lg-6 col-xl-5 p-5 shadow rounded">
-        <h1 className={`display-4 mb-4 text-center ${darkMode ? 'text-light' : 'text-dark'}`}>Login</h1>
-        <form onSubmit={handleSubmit} className="w-100">
-          <div className="form-group mb-4">
-            <label htmlFor="email" className={darkMode ? 'text-light' : 'text-dark'}>Email</label>
+    <div
+      className="d-flex justify-content-center align-items-center"
+      style={{
+        minHeight: "90vh",
+        backgroundColor: darkMode ? "#1C1C1C" : "#f8f9fa",
+        transition: "background-color 0.3s ease-in-out",
+      }}
+    >
+      <div
+        className="p-5 shadow-lg rounded-4 w-100"
+        style={{
+          backgroundColor: darkMode ? "#3C3C3C" : "#ffffff",
+          color: darkMode ? "#fff" : "#333",
+          maxWidth: "420px",
+          padding: "2rem",
+          transition: "background-color 0.3s ease-in-out, color 0.3s ease-in-out",
+        }}
+      >
+        <h2 className="text-center mb-4 fw-bold">Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label fw-semibold">
+              Email
+            </label>
             <input
               type="email"
-              className="form-control"
+              className="form-control rounded-3"
               id="email"
               value={userCreds.email}
               onChange={handleChange}
@@ -65,11 +83,13 @@ const Login = () => {
               required
             />
           </div>
-          <div className="form-group mb-4">
-            <label htmlFor="password" className={darkMode ? 'text-light' : 'text-dark'}>Password</label>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label fw-semibold">
+              Password
+            </label>
             <input
               type="password"
-              className="form-control"
+              className="form-control rounded-3"
               id="password"
               value={userCreds.password}
               onChange={handleChange}
@@ -77,16 +97,24 @@ const Login = () => {
               required
             />
           </div>
-          <div className="d-grid gap-2">
-            <button disabled={loading} type="submit" className={`btn btn-${darkMode ? 'light' : 'primary'}`}>
-              {loading ? 'Logging In...' : 'Login'}
+          <div className="d-grid my-3">
+            <button
+              type="submit"
+              disabled={loading}
+              className={`btn btn-lg rounded-3 btn-${darkMode ? "light" : "primary"}`}
+            >
+              {loading ? "Logging In..." : "Login"}
             </button>
           </div>
         </form>
-        <hr className={`my-4 ${darkMode ? 'border-light' : 'border-dark'}`} />
-        <p className={`text-center mb-0 ${darkMode ? 'text-light' : 'text-dark'}`}>
-          Don't have an account?{' '}
-          <Link to="/register" className={darkMode ? 'text-light' : 'text-primary'}>
+        <hr className="my-4" />
+        <p className="text-center">
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            className="text-decoration-none fw-semibold"
+            style={{ color: darkMode ? "#FFD700" : "#007bff" }}
+          >
             Register here
           </Link>
         </p>

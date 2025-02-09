@@ -55,31 +55,30 @@ const Register = () => {
 
   return (
     <div
-  className={`container my-5 d-flex justify-content-center align-items-center ${
-    darkMode ? "text-light bg-dark-light" : "text-dark bg-light"
-  }`}
-  style={{ minHeight: "80vh" }}
->
-  <div className={`col-md-8 col-lg-6 col-xl-5 p-5 shadow rounded ${darkMode ? "form-dark-mode" : "bg-white"}`}>
-
-        <h1
-          className={`display-4 mb-4 text-center ${
-            darkMode ? "text-light" : "text-dark"
-          }`}
-        >
-          Register
-        </h1>
-        <form onSubmit={handleSubmit} className="w-100">
-          <div className="form-group mb-3">
-            <label
-              htmlFor="username"
-              className={darkMode ? "text-light" : "text-dark"}
-            >
-              Username
-            </label>
+      className="d-flex justify-content-center align-items-center mt-5 p-4"
+      style={{ 
+        minHeight: "90vh", 
+        backgroundColor: darkMode ? "#1C1C1C" : "#f4f4f4", // Darker background in dark mode
+        transition: "background-color 0.3s ease-in-out"
+      }}
+    >
+      <div
+        className="p-5 shadow-lg rounded-4 w-100"
+        style={{
+          backgroundColor: darkMode ? "#3C3C3C" : "#ffffff",
+          color: darkMode ? "#fff" : "#333",
+          maxWidth: "420px",
+          padding: "2rem",
+          transition: "background-color 0.3s ease-in-out, color 0.3s ease-in-out"
+        }}
+      >
+        <h2 className="text-center mb-4 fw-bold">Register</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="username" className="form-label fw-semibold">Username</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control rounded-3"
               id="username"
               value={userCreds.username}
               onChange={handleChange}
@@ -87,16 +86,11 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group mb-3">
-            <label
-              htmlFor="email"
-              className={darkMode ? "text-light" : "text-dark"}
-            >
-              Email
-            </label>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label fw-semibold">Email</label>
             <input
               type="email"
-              className="form-control"
+              className="form-control rounded-3"
               id="email"
               value={userCreds.email}
               onChange={handleChange}
@@ -104,16 +98,11 @@ const Register = () => {
               required
             />
           </div>
-          <div className="form-group mb-3">
-            <label
-              htmlFor="password"
-              className={darkMode ? "text-light" : "text-dark"}
-            >
-              Password
-            </label>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label fw-semibold">Password</label>
             <input
               type="password"
-              className="form-control"
+              className="form-control rounded-3"
               id="password"
               value={userCreds.password}
               onChange={handleChange}
@@ -121,25 +110,19 @@ const Register = () => {
               required
             />
           </div>
-          <div className="d-grid gap-2 my-3">
+          <div className="d-grid my-3">
             <button
               type="submit"
               disabled={loading}
-              className={`btn btn-${darkMode ? "light" : "primary"}`}
+              className={`btn btn-lg rounded-3 btn-${darkMode ? "light" : "primary"}`}
             >
               {loading ? "Registering..." : "Register"}
             </button>
           </div>
         </form>
-        <hr className={`my-4 ${darkMode ? "border-light" : "border-dark"}`} />
-        <p className={`text-center ${darkMode ? "text-light" : "text-dark"}`}>
-          Already have an account?{" "}
-          <Link
-            to="/login"
-            className={darkMode ? "text-light" : "text-primary"}
-          >
-            Login here
-          </Link>
+        <hr className="my-4" />
+        <p className="text-center">
+          Already have an account? <Link to="/login" className="text-decoration-none fw-semibold" style={{ color: darkMode ? "#FFD700" : "#007bff" }}>Login here</Link>
         </p>
       </div>
     </div>
